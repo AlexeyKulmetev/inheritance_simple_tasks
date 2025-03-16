@@ -9,9 +9,9 @@ public:
 	
 	Rectangle() = default;
 
-	int getLength() const  { return length; }
+	//int getLength() const  { return length; }
 
-	int getWidth() const { return width; }
+	//int getWidth() const { return width; }
 
 	void display() const {
 		std::cout << length * width;
@@ -41,7 +41,7 @@ public:
 		height(_height) {}
 
 	void display() const {
-		std::cout << getLength() * getWidth() * height;
+		std::cout << length * width * height;
 	}
 
 	Cuboid& operator *= (Cuboid& other) {

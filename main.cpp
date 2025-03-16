@@ -1,7 +1,7 @@
 #include "animal.hpp"
 #include "person.hpp"
 #include "point.hpp"
-
+#include "counter.hpp"
 
 int main() {
 
@@ -17,24 +17,34 @@ int main() {
 	//CollageStudent collageStudent;
 	//collageStudent.attendLecture();
 	
-	Point2D p1(4, 6);
-	p1.display();
-	std::cout << "\n";
-	Point2D p2(2, 1);
-	p2.display();
-	std::cout << "\n";
-	p2 += p1;
-	p2.display();
-	std::cout << "\n";
+	//Point2D p1(4, 6);
+	//p1.display();
+	//std::cout << "\n";
+	//Point2D p2(2, 1);
+	//p2.display();
+	//std::cout << "\n";
+	//p2 += p1;
+	//p2.display();
+	//std::cout << "\n";
 
-	Point3D p3(2, 5, 1);
-	p3.display();
-	std::cout << "\n";
-	Point3D p4(3, 2, 4);
-	p4.display();
-	std::cout << "\n";
-	p3 += p4;
-	p3.display();
+	//Point3D p3(2, 5, 1);
+	//p3.display();
+	//std::cout << "\n";
+	//Point3D p4(3, 2, 4);
+	//p4.display();
+	//std::cout << "\n";
+	//p3 += p4;
+	//p3.display();
+
+	Counter counter(0);
+	counter.display();
+	counter++;
+	counter.display();
+	++counter;
+	counter.display();
+	Timer timer;
+	timer.Counter::operator++();
+
 
 	return 0;
 }
