@@ -5,7 +5,7 @@
 
 class Counter {
 public:
-	Counter() = default;
+	Counter() : count(0) {}
 
 	Counter(int _count) : count(_count) {}
 
@@ -13,7 +13,7 @@ public:
 		count = value;
 	}
 
-	int getCount() { return count; }
+	int getCount() const { return count; }
 
 	void display() const {
 		std::cout << count;
@@ -34,16 +34,28 @@ private:
 	int count;
 };
 
-class Timer : private Counter {
+class Timer : public Counter {
 public:
-	Timer() = default;
+	Timer() : Counter() {}
 
 	Timer(int _count) : Counter(_count) {}
 
 	void reset() { setCount(0); }
 
+	// FIX ME how to make this method const
 	void display() {
 		std::cout << "Time: " << getCount();
+	}
+
+	Timer& operator ++ () {
+		Counter::operator++();
+		return *this;
+	}
+
+	Timer operator ++ (int) {
+		Timer tmp = *this;
+		Counter::operator++();
+		return tmp;
 	}
 };
 

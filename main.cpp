@@ -42,9 +42,12 @@ int main() {
 	counter.display();
 	++counter;
 	counter.display();
+	std::cout << "\n";
 	Timer timer;
-	timer.Counter::operator++();
-
+	timer++;
+	timer.display();
+	++timer;
+	timer.display();
 
 	return 0;
 }
