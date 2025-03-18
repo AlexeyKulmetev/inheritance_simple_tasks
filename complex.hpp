@@ -14,6 +14,10 @@ public:
 
 	double getImaginary() const { return imaginary; }
 
+	void setReal(double _real) { real = _real; }
+
+	void setImaginary(double _imagenary) { imaginary = _imagenary; }
+
 	void displa() const {
 		std::cout << real << " + " << imaginary << "i";
 	}
@@ -30,7 +34,7 @@ public:
 		return sum;
 	}
 
-	friend Complex operator + (const Complex& first, const Complex& second) const; // FIX ME
+	friend Complex operator + (const Complex& first, const Complex& second);
 
 
 private:
@@ -45,13 +49,44 @@ public:
 	void displayPoar() const {
 		double r = sqrt(pow(getReal(), 2) + pow(getImaginary(), 2));
 		double theta = atan2(getImaginary(), getReal());
-		std::cout << getReal() << "(cos(" << theta << ") + i sin(" << theta << "))";
+		std::cout << r << "(cos(" << theta << ") + i sin(" << theta << "))";
+	}
+
+	PolarComplex& operator *= (const PolarComplex& other) {
+		setReal(calcMagnitude() * other.calcMagnitude());
+		setImaginary(calcAngle() + other.calcAngle());
+		return *this;
+	}
+
+	PolarComplex operator * (const PolarComplex& other) const {
+		PolarComplex prod = *this;
+		prod *= other;
+		return prod;
+	}
+
+	friend PolarComplex operator * (const PolarComplex& first, const PolarComplex& second);
+
+private:
+	// calculate magnitude for polar complex form
+	double calcMagnitude() const {
+		return sqrt((getReal() * getReal()) + (getImaginary() * getImaginary()));
+	}
+
+	// calculate angle for polar complex form 
+	double calcAngle() const {
+		return atan2(getImaginary(), getReal());
 	}
 };
 
-// FIX ME
-Complex operator + (const Complex& first, const Complex& second) const { 
+
+Complex operator + (const Complex& first, const Complex& second) { 
 	return Complex(first.real + second.real, first.imaginary + second.imaginary);
 }
 
-#endif // !1
+PolarComplex operator*(const PolarComplex& first, const PolarComplex& second)
+{
+	return PolarComplex(first.calcMagnitude() * second.calcMagnitude(), 
+		first.calcAngle() + first.calcAngle());
+}
+
+#endif // !COMPLEX
