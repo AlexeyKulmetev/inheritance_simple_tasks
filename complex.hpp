@@ -14,11 +14,11 @@ public:
 
 	double getImaginary() const { return imaginary; }
 
-	void setReal(double _real) { real = _real; }
+	void setReal(const double _real) { real = _real; }
 
-	void setImaginary(double _imagenary) { imaginary = _imagenary; }
+	void setImaginary(const double _imagenary) { imaginary = _imagenary; }
 
-	void displa() const {
+	void display() const {
 		std::cout << real << " + " << imaginary << "i";
 	}
 
@@ -33,8 +33,8 @@ public:
 		sum += other;
 		return sum;
 	}
-
-	friend Complex operator + (const Complex& first, const Complex& second);
+	// FIX ME probably the friend Complex operator + func can be removed
+	//friend Complex operator + (const Complex& first, const Complex& second);
 
 
 private:
@@ -46,9 +46,9 @@ class PolarComplex : private Complex {
 public:
 	PolarComplex(double _real, double _imaginary) : Complex(_real, _imaginary) {}
 
-	void displayPoar() const {
-		double r = sqrt(pow(getReal(), 2) + pow(getImaginary(), 2));
-		double theta = atan2(getImaginary(), getReal());
+	void displayPolar() const {
+		double r = calcMagnitude();
+		double theta = calcAngle();
 		std::cout << r << "(cos(" << theta << ") + i sin(" << theta << "))";
 	}
 
@@ -63,8 +63,8 @@ public:
 		prod *= other;
 		return prod;
 	}
-
-	friend PolarComplex operator * (const PolarComplex& first, const PolarComplex& second);
+	// FIX ME probably the friend Complex operator + func can be removed
+	//friend PolarComplex operator * (const PolarComplex& first, const PolarComplex& second);
 
 private:
 	// calculate magnitude for polar complex form
@@ -79,14 +79,14 @@ private:
 };
 
 
-Complex operator + (const Complex& first, const Complex& second) { 
-	return Complex(first.real + second.real, first.imaginary + second.imaginary);
-}
+//Complex operator + (const Complex& first, const Complex& second) { 
+//	return Complex(first.real + second.real, first.imaginary + second.imaginary);
+//}
 
-PolarComplex operator*(const PolarComplex& first, const PolarComplex& second)
-{
-	return PolarComplex(first.calcMagnitude() * second.calcMagnitude(), 
-		first.calcAngle() + first.calcAngle());
-}
+//PolarComplex operator*(const PolarComplex& first, const PolarComplex& second)
+//{
+//	return PolarComplex(first.calcMagnitude() * second.calcMagnitude(), 
+//		first.calcAngle() + first.calcAngle());
+//}
 
 #endif // !COMPLEX
