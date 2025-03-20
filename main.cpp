@@ -2,6 +2,8 @@
 #include "person.hpp"
 #include "point.hpp"
 #include "counter.hpp"
+#include "complex.hpp"
+#include "matrix.hpp"
 
 int main() {
 
@@ -36,18 +38,65 @@ int main() {
 	//p3 += p4;
 	//p3.display();
 
-	Counter counter(0);
-	counter.display();
-	counter++;
-	counter.display();
-	++counter;
-	counter.display();
+	//Counter counter(0);
+	//counter.display();
+	//counter++;
+	//counter.display();
+	//++counter;
+	//counter.display();
+	//std::cout << "\n";
+	//Timer timer;
+	//timer++;
+	//timer.display();
+	//++timer;
+	//timer.display();
+
+	//Complex c1;
+	//c1.display();
+	//std::cout << "\n";
+	//Complex c2(3.0, 2.74);
+	//c2.display();
+	//std::cout << "\n";
+	//c1 += c2;
+	//c1.display();
+	//std::cout << "\n";
+	//Complex c3 = c1 + c2;
+	//c3.display();
+	//std::cout << "\n";
+	//PolarComplex pC1(2.6, 6.8);
+	//pC1.displayPolar();
+	//std::cout << "\n";
+	//PolarComplex pC2(1.3, 2.5);
+	//pC2.displayPolar();
+	//std::cout << "\n";
+	//PolarComplex pC3 = pC1 * pC2;
+	//pC3.displayPolar();
+
+
+	Matrix m1{ 1, 2, 3, 4 };
+	m1.display();
 	std::cout << "\n";
-	Timer timer;
-	timer++;
-	timer.display();
-	++timer;
-	timer.display();
+	Matrix m2{ 2, 2, 2, 2 };
+	m2.display();
+	std::cout << "\n";
+	Matrix m3 = m1 + m2;
+	m3.display();
+	std::cout << "\n";
+	Matrix m4;
+	m4 += m1;
+	m4.display();
+	std::cout << "\n";
+	SquareMatrix sM1{ 2, 2, 2, 2 };
+	sM1.display();
+	std::cout << "\n";
+	SquareMatrix sM2{ 4, 3, 2, 1 };
+	sM2.display();
+	std::cout << "\n";
+	sM2 *= sM1;
+	sM2.display();
+	std::cout << "\n";
+	SquareMatrix sM3 = sM2 * sM1;
+	sM3.display();
 
 	return 0;
 }

@@ -44,7 +44,10 @@ public:
 	}
 
 protected:
-	int matrix[2][2];
+	int matrix[2][2] = {
+		{0, 0},
+		{0, 0}
+	};
 
 };
 
@@ -64,6 +67,7 @@ public:
 				matrix[i][j] *= other.matrix[i][j];
 			}
 		}
+		return *this;
 	}
 
 	SquareMatrix operator * (const SquareMatrix& other) const {
